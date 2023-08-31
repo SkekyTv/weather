@@ -1,5 +1,5 @@
 import express from "express";
-import properties from "../package.json";
+import properties from "../../package.json";
 
 const aboutRoute = express.Router();
 
@@ -12,5 +12,4 @@ aboutRoute.get("/", (req, res)=> {
     res.json(aboutInfo)
 })
 
-// module.exports = aboutRoute
 export default aboutRoute;
