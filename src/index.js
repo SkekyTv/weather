@@ -1,18 +1,22 @@
-import bodyParser from "body-parser";
-import express from "express";
+import bodyParser from 'body-parser';
+import express from 'express';
 // const aboutRouter = require("./routes/about");
 // const weatherRouter = require("./routes/weather");
-import aboutRouter from './routes/about.js';
+import aboutRouter from './routes/about';
 
 const PORT = 3000;
-const HOST_NAME = "localhost";
+const HOST_NAME = 'localhost';
 
 const app = express();
-app.use(express.static("client"));
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(express.static('client'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use("/weather", weatherRouter);
-app.use("/about", aboutRouter);
+app.use('/about', aboutRouter);
 
-app.listen(PORT, HOST_NAME,
-           () => {console.log(`Server running at ${HOST_NAME}:${PORT}`)})
+app.listen(
+  PORT,
+  HOST_NAME,
+  // eslint-disable-next-line
+  () => { console.log(`Server running at ${HOST_NAME}:${PORT}`); },
+);
