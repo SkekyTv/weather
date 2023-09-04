@@ -1,11 +1,8 @@
 import Koa from 'koa';
 import router from 'koa-route';
-
+import config from '../config';
 import aboutRouter from './routes/about';
 import weatherRouter from './routes/weather';
-
-const PORT = 3000;
-const HOST_NAME = 'localhost';
 
 const app = new Koa();
 
@@ -20,8 +17,8 @@ app.use(router.get('/about', aboutRouter));
 app.use(router.get('/weather', weatherRouter.get));
 
 app.listen(
-  PORT,
-  HOST_NAME,
+  config.port,
+  config.host,
   // eslint-disable-next-line
-  () => { console.log(`Server running at ${HOST_NAME}:${PORT}`); },
+  () => { console.log(`Server running at ${config.host}:${config.port}`); },
 );
