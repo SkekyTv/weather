@@ -1,16 +1,9 @@
-import express from 'express';
-
 import properties from '../../package.json';
 
-const aboutRoute = express.Router();
-
-aboutRoute.get('/', (req, res) => {
-  const aboutInfo = {
+export default (ctx) => {
+  ctx.body = {
     name: properties.name,
     description: properties.description,
     author: properties.author,
   };
-  res.json(aboutInfo);
-});
-
-export default aboutRoute;
+};

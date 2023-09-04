@@ -1,19 +1,23 @@
-import bodyParser from 'body-parser';
-import express from 'express';
+import Koa from 'koa';
+import router from 'koa-route';
 
-// const aboutRouter = require("./routes/about");
 import aboutRouter from './routes/about';
 import weatherRouter from './routes/weather';
 
 const PORT = 3000;
 const HOST_NAME = 'localhost';
 
-const app = express();
-app.use(express.static('client'));
-app.use(bodyParser.urlencoded({ extended: true }));
+const app = new Koa();
 
-app.use("/weather", weatherRouter);
-app.use('/about', aboutRouter);
+// basic logger
+app.use(async (ctx, next) => {
+  await next();
+  const rt = ctx.response.get('X-Response-Time');
+  console.log(`${ctx.method} ${ctx.url} - ${rt}`);
+});
+
+app.use(router.get('/about', aboutRouter));
+app.use(router.get('/weather', weatherRouter.get));
 
 app.listen(
   PORT,
