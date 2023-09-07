@@ -8,7 +8,7 @@ const config = {
     key: process.env.WEATHER_API_KEY,
   },
   geocode: {
-    url: process.env.GEOCODE_URL || 'http://localhost:3010/geocode',
+    url: process.env.GEOCODE_URL || 'http://city:3010/geocode',
   },
 };
 
