@@ -1,7 +1,8 @@
 import axios from 'axios';
+import config from '../../config';
 
 const getWeather = async (lat, lng) => {
-  const response = await axios.get('https://api.open-meteo.com/v1/forecast', {
+  const response = await axios.get(config.weather.url, {
     params: {
       latitude: lat,
       longitude: lng,
